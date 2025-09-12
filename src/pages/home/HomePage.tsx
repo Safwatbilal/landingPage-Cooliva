@@ -1,7 +1,28 @@
+import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import Projects from "@/components/Projects";
+import Testimonials from "@/components/Testimonials";
+import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
+
 const HomePage = () => {
   return (
-    <div className="bg-primary">
-      a<div className="bg-primary text-red-500 p-4">Primary Background</div>
+    <div
+      className="absolute inset-0 bg-cover bg-center"
+      style={{ backgroundImage: "url('/back.png')" }}
+    >
+      <Header />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Projects />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
     </div>
   );
 };

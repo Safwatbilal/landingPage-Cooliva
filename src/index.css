@@ -71,7 +71,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
-
+.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    var(--secondary) 50%,
+    var(--tertiary) 100%
+  );
+}
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
 
@@ -166,7 +173,7 @@ button:focus-visible {
 }
 
 .dark {
-  --primary: #5433ff; /* فيك تختار نسخة أغمق إذا حابب */
+  --primary: #5433ff;
   --primary-foreground: #ffffff;
 
   --secondary: #20bdff;
