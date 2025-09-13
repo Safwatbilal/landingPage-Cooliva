@@ -34,11 +34,9 @@ const RequestDiscount = () => {
 
   return (
     <section id="discount" dir="rtl">
-      <div className="spikes"></div>
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
         {/* Content Side */}
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
@@ -74,7 +72,6 @@ const RequestDiscount = () => {
             </motion.p>
 
             <motion.div
-              initial={{ y: 30, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.7, duration: 0.8 }}
               viewport={{ once: true }}
