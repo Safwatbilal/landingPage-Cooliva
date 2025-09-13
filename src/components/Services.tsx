@@ -1,195 +1,116 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 import {
   Snowflake,
   Truck,
-  Settings,
+  Factory,
   Wrench,
-  Building,
-  Shield,
-  ArrowLeft,
+  Thermometer,
+  Settings,
 } from "lucide-react";
 
 const Services = () => {
   const services = [
     {
-      icon: Building,
+      id: 1,
+      icon: Snowflake,
       title: "غرف التبريد والتجميد",
-      description:
-        "توريد وتركيب جميع الأنواع بمقاسات مختلفة باستخدام أفضل العوازل والمعدات",
-      features: [
-        "ساندوتش بنل عازل عالي الجودة",
-        "أبواب مفصلية وأبواب سحاب",
-        "أنظمة تحكم حديثة",
-        "عزل الأرضيات ببوليسترين 5 مم",
-      ],
-      gradient: "from-primary to-secondary",
     },
     {
+      id: 2,
       icon: Truck,
-      title: "عزل سيارات النقل المبرد",
-      description:
-        "تجهيز وعزل سيارات النقل المبرد مع تركيب وحدات تبريد عالية الكفاءة",
-      features: [
-        "عزل كامل للصندوق",
-        "وحدات تبريد متطورة",
-        "أنظمة مراقبة درجة الحرارة",
-        "ضمان ضد التسرب الحراري",
-      ],
-      gradient: "from-secondary to-tertiary",
+      title: "سيارات النقل المبرد",
     },
     {
-      icon: Settings,
-      title: "وحدات التبريد",
-      description: "تركيب وحدات تبريد متنوعة للمصانع، المخازن، والمطاعم",
-      features: [
-        "كمبريسورات عالمية الجودة",
-        "مبخرات متطورة",
-        "لوحات كهربائية ذكية",
-        "وحدات تحكم رقمية",
-      ],
-      gradient: "from-tertiary to-primary",
+      id: 3,
+      icon: Factory,
+      title: "وحدات التبريد الصناعية",
     },
     {
+      id: 4,
       icon: Wrench,
       title: "الصيانة والعقود",
-      description:
-        "خدمات صيانة دورية وسريعة مع إمكانية عقود سنوية أو حسب الطلب",
-      features: [
-        "صيانة دورية مجدولة",
-        "استجابة سريعة للطوارئ",
-        "قطع غيار أصلية",
-        "تقارير صيانة تفصيلية",
-      ],
-      gradient: "from-primary via-secondary to-tertiary",
-    },
-  ];
-
-  const suppliers = [
-    {
-      category: "المبخرات والكمبريسورات",
-      brands: ["Copeland", "Danfoss", "Bitzer", "Embraco"],
-      icon: Snowflake,
     },
     {
-      category: "لوحات الكهرباء",
-      brands: ["Schneider Electric", "ABB", "Siemens", "Eaton"],
+      id: 5,
+      icon: Thermometer,
+      title: "أنظمة التحكم والمراقبة",
+    },
+    {
+      id: 6,
       icon: Settings,
-    },
-    {
-      category: "وحدات التحكم",
-      brands: ["Dixell", "Eliwell", "Carel", "Johnson Controls"],
-      icon: Settings,
-    },
-    {
-      category: "مواد العزل",
-      brands: ["Kingspan", "Metecno", "Marcegaglia", "ArcelorMittal"],
-      icon: Shield,
+      title: "الاستشارات التقنية",
     },
   ];
 
   return (
-    <section id="services" className="py-20 bg-muted/30">
+    <section id="services" className="py-20 bg-gray-50" dir="rtl">
+      <div className="main-title">خدماتنا</div>
+
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-white">خدماتنا</Badge>
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            حلول متكاملة في
-            <span className="text-primary"> التبريد والتجميد</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            نقدم مجموعة شاملة من الخدمات المتخصصة في مجال التبريد والتجميد
-            لتلبية جميع احتياجاتكم
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-elegant transition-all duration-500 border-0 overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+            <motion.div
+              key={service.id}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group relative bg-white rounded-lg shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 overflow-hidden"
             >
-              <div className={`h-2 bg-gradient-to-r ${service.gradient}`}></div>
-              <CardHeader className="pb-4">
-                <div className="flex items-center gap-4 mb-4">
-                  <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${service.gradient} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <service.icon className="w-8 h-8 text-white" />
+              {/* Top Border Animation */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-1 bg-primary w-0 group-hover:w-full transition-all duration-500"></div>
+
+              <div className="p-8">
+                {/* Icon */}
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-full mb-4 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                    <service.icon
+                      size={40}
+                      className="text-gray-400 group-hover:text-white"
+                    />
                   </div>
-                  <CardTitle className="text-xl text-foreground">
-                    {service.title}
-                  </CardTitle>
                 </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </CardHeader>
 
-              <CardContent>
-                <ul className="space-y-3 mb-6">
-                  {service.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-center gap-3">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                {/* Title */}
+                <h3 className="text-lg font-semibold text-center text-gray-700 mb-8 leading-relaxed">
+                  {service.title}
+                </h3>
 
-                <Button variant="outline" className="group">
-                  اعرف المزيد
-                  <ArrowLeft className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Suppliers Section */}
-        <div className="bg-card rounded-3xl p-8 shadow-elegant">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4 text-foreground">
-              شركاؤنا العالميون
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              نتعامل مع أفضل الشركات العالمية لضمان جودة المعدات والمواد
-              المستخدمة في مشاريعنا
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {suppliers.map((supplier, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-lg transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <supplier.icon className="w-6 h-6 text-white" />
+                {/* Info Section */}
+                <div className="relative bg-gray-50 p-4 -mx-8 -mb-8">
+                  {/* Service Counter */}
+                  <div className="absolute right-0 top-0 bottom-0 w-20 bg-primary text-white flex items-center justify-center font-bold text-2xl">
+                    {service.id.toString().padStart(2, "0")}
                   </div>
-                  <h4 className="font-bold mb-3 text-foreground">
-                    {supplier.category}
-                  </h4>
-                  <div className="space-y-2">
-                    {supplier.brands.map((brand, brandIndex) => (
-                      <Badge
-                        key={brandIndex}
-                        variant="secondary"
-                        className="text-xs"
+
+                  {/* Skewed Divider */}
+                  <div className="absolute right-20 top-0 bottom-0 w-12 bg-gray-300 transform skew-x-12"></div>
+
+                  {/* Details Link */}
+                  <div className="text-left pr-32">
+                    <a
+                      href="#"
+                      className="text-primary font-semibold hover:text-primary/80 transition-colors inline-flex items-center"
+                    >
+                      {/* <svg
+                        className="w-4 h-4 mr-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                       >
-                        {brand}
-                      </Badge>
-                    ))}
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg> */}
+                    </a>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

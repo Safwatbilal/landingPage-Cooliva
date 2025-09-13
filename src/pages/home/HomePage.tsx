@@ -6,22 +6,24 @@ import Projects from "@/components/Projects";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import WhyUs from "@/components/WhyUs";
+import AfterSales from "@/components/AfterSales";
+import RequestDiscount from "@/components/RequestDiscount";
 
 const HomePage = () => {
   return (
-    <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: "url('/back.png')" }}
-    >
-      <Header />
+    <div>
       <main>
         <Hero />
         <About />
         <Services />
+        <WhyUs />
         <Projects />
         <Testimonials />
-        <Contact />
+
+        <RequestDiscount />
       </main>
+
       <Footer />
     </div>
   );

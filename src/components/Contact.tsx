@@ -1,272 +1,304 @@
 import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { motion } from "framer-motion";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Phone, Mail, MapPin, Clock, MessageSquare, Send } from "lucide-react";
-import { toast } from "sonner";
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Clock,
+  Send,
+  Calculator,
+} from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
     phone: "",
-    service: "",
+    email: "",
+    projectType: "",
+    location: "",
     message: "",
   });
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: "اتصل بنا",
-      details: ["+966 11 234 5678", "+966 50 123 4567"],
-      description: "متاحون للرد على استفساراتكم",
-    },
-    {
-      icon: Mail,
-      title: "راسلنا",
-      details: ["info@cooliva-sa.com", "sales@cooliva-sa.com"],
-      description: "نرد على رسائلكم خلال 24 ساعة",
-    },
-    {
-      icon: MapPin,
-      title: "موقعنا",
-      details: [
-        "الرياض، المملكة العربية السعودية",
-        "حي الملك فهد، شارع الأمير محمد",
-      ],
-      description: "زوروا مقرنا الرئيسي",
-    },
-    {
-      icon: Clock,
-      title: "أوقات العمل",
-      details: ["السبت - الخميس: 8ص - 6م", "الجمعة: مغلق"],
-      description: "دعم فني 24/7 للطوارئ",
-    },
-  ];
-
-  const services = [
-    "غرف التبريد والتجميد",
-    "عزل سيارات النقل المبرد",
-    "وحدات التبريد",
-    "الصيانة والعقود",
-    "استشارة فنية",
-    "أخرى",
-  ];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // Handle form submission here
 
-    toast.success("تم إرسال طلبكم بنجاح!");
-    // Reset form
     setFormData({
       name: "",
-      email: "",
       phone: "",
-      service: "",
+      email: "",
+      projectType: "",
+      location: "",
       message: "",
     });
   };
 
-  const handleInputChange = (field: string, value: string) => {
-    setFormData((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
+  const contactInfo = [
+    {
+      icon: Phone,
+      title: "الهاتف الرئيسي",
+      value: "966-11-123-4567+",
+      description: "متاح من 8 صباحاً حتى 6 مساءً",
+    },
+    {
+      icon: MessageCircle,
+      title: "واتساب",
+      value: "966-50-987-6543+",
+      description: "متاح 24/7 للاستفسارات السريعة",
+    },
+    {
+      icon: Mail,
+      title: "البريد الإلكتروني",
+      value: "info@cooling-company.com",
+      description: "للاستفسارات والعروض التجارية",
+    },
+    {
+      icon: MapPin,
+      title: "العنوان",
+      value: "الرياض، حي النخيل، شارع الملك فهد",
+      description: "مقر الشركة الرئيسي",
+    },
+  ];
+
   return (
-    <section id="contact" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-white">
+    <section id="contact" className="py-20 bg-surface">
+      <div className="container-custom">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-6">
             اتصل بنا
-          </Badge>
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            احصل على
-            <span className="text-primary"> عرض سعر مجاني</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            تواصل معنا اليوم واحصل على استشارة مجانية وعرض سعر مخصص لمشروعك
+            احصل على عرض سعر مجاني لمشروعك أو تواصل معنا للاستفسار عن خدماتنا
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            {contactInfo.map((info, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-elegant transition-all duration-300 animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                      <info.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg mb-2 text-foreground">
-                        {info.title}
-                      </h3>
-                      {info.details.map((detail, detailIndex) => (
-                        <p
-                          key={detailIndex}
-                          className="text-primary font-medium mb-1"
-                        >
-                          {detail}
-                        </p>
-                      ))}
-                      <p className="text-sm text-muted-foreground">
-                        {info.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-
-            {/* WhatsApp Quick Contact */}
-            <Card className="bg-gradient-primary text-white">
-              <CardContent className="p-6 text-center">
-                <MessageSquare className="w-12 h-12 mx-auto mb-4" />
-                <h3 className="font-bold text-lg mb-2">واتساب مباشر</h3>
-                <p className="mb-4 text-white/90">
-                  للاستفسارات السريعة والطوارئ
-                </p>
-                <Button className="bg-white text-primary hover:bg-white/90 w-full">
-                  تواصل عبر واتساب
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-
+        <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="shadow-elegant">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Card>
               <CardHeader>
-                <CardTitle className="text-2xl text-center">
-                  نموذج طلب عرض سعر
+                <CardTitle className="text-2xl text-secondary flex items-center gap-3">
+                  <Calculator className="w-7 h-7 text-primary" />
+                  طلب عرض سعر مجاني
                 </CardTitle>
+                <p className="text-muted-foreground">
+                  املأ النموذج وسنتواصل معك خلال 24 ساعة بعرض سعر مفصل
+                </p>
               </CardHeader>
+
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
                       <Label htmlFor="name">الاسم الكامل *</Label>
                       <Input
                         id="name"
+                        name="name"
                         value={formData.name}
-                        onChange={(e) =>
-                          handleInputChange("name", e.target.value)
-                        }
+                        onChange={handleChange}
                         placeholder="أدخل اسمك الكامل"
                         required
-                        className="text-right"
+                        className="mt-2"
                       />
                     </div>
-                    <div className="space-y-2">
+                    <div>
                       <Label htmlFor="phone">رقم الهاتف *</Label>
                       <Input
                         id="phone"
+                        name="phone"
                         type="tel"
                         value={formData.phone}
-                        onChange={(e) =>
-                          handleInputChange("phone", e.target.value)
-                        }
-                        placeholder="05xxxxxxxx"
+                        onChange={handleChange}
+                        placeholder="966-5X-XXX-XXXX+"
                         required
-                        className="text-right"
+                        className="mt-2"
                       />
                     </div>
                   </div>
 
-                  <div className="space-y-2">
+                  <div>
                     <Label htmlFor="email">البريد الإلكتروني</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       value={formData.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      placeholder="example@email.com"
-                      className="text-right"
+                      onChange={handleChange}
+                      placeholder="example@domain.com"
+                      className="mt-2"
                     />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="service">نوع الخدمة المطلوبة *</Label>
-                    <Select
-                      value={formData.service}
-                      onValueChange={(value) =>
-                        handleInputChange("service", value)
-                      }
-                    >
-                      <SelectTrigger className="text-right">
-                        <SelectValue placeholder="اختر نوع الخدمة" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {services.map((service, index) => (
-                          <SelectItem key={index} value={service}>
-                            {service}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="projectType">نوع المشروع *</Label>
+                      <Input
+                        id="projectType"
+                        name="projectType"
+                        value={formData.projectType}
+                        onChange={handleChange}
+                        placeholder="مطعم، مستشفى، مصنع، إلخ"
+                        required
+                        className="mt-2"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="location">الموقع *</Label>
+                      <Input
+                        id="location"
+                        name="location"
+                        value={formData.location}
+                        onChange={handleChange}
+                        placeholder="المدينة أو المنطقة"
+                        required
+                        className="mt-2"
+                      />
+                    </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="message">تفاصيل المشروع *</Label>
+                  <div>
+                    <Label htmlFor="message">تفاصيل المشروع</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       value={formData.message}
-                      onChange={(e) =>
-                        handleInputChange("message", e.target.value)
-                      }
-                      placeholder="اكتب تفاصيل مشروعك هنا (المساحة، نوع التبريد المطلوب، الموقع، إلخ...)"
-                      rows={5}
-                      required
-                      className="text-right resize-none"
+                      onChange={handleChange}
+                      placeholder="اكتب تفاصيل مشروعك أو متطلباتك الخاصة..."
+                      rows={4}
+                      className="mt-2"
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg py-3"
+                    className="w-full bg-primary hover:bg-primary-dark text-primary-foreground rounded-xl py-3 text-lg font-semibold"
                   >
+                    <Send className="w-5 h-5 ml-2" />
                     إرسال طلب العرض
-                    <Send className="w-5 h-5 mr-2" />
                   </Button>
                 </form>
               </CardContent>
             </Card>
-          </div>
-        </div>
+          </motion.div>
 
-        {/* Map Section */}
-        <div className="mt-16">
-          <Card className="overflow-hidden">
-            <div className="h-64 bg-muted flex items-center justify-center">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-bold mb-2">موقعنا على الخريطة</h3>
-                <p className="text-muted-foreground">
-                  الرياض، المملكة العربية السعودية
-                </p>
-              </div>
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl text-secondary">
+                  معلومات التواصل
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="bg-primary/10 p-3 rounded-xl flex-shrink-0">
+                      <info.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-secondary mb-1">
+                        {info.title}
+                      </h4>
+                      <p className="text-primary font-medium mb-1">
+                        {info.value}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {info.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </CardContent>
+            </Card>
+
+            {/* Business Hours */}
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-primary/10 p-3 rounded-xl">
+                    <Clock className="w-6 h-6 text-primary" />
+                  </div>
+                  <h4 className="font-bold text-secondary">ساعات العمل</h4>
+                </div>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      السبت - الخميس:
+                    </span>
+                    <span className="font-medium">8:00 ص - 6:00 م</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">الجمعة:</span>
+                    <span className="font-medium">مغلق</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">خدمة الطوارئ:</span>
+                    <span className="font-medium text-primary">24/7</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Quick Contact Buttons */}
+            <div className="grid grid-cols-2 gap-4">
+              <Button
+                className="bg-green-500 hover:bg-green-600 text-white rounded-xl py-4"
+                onClick={() =>
+                  window.open("https://wa.me/966509876543", "_blank")
+                }
+              >
+                <MessageCircle className="w-5 h-5 ml-2" />
+                واتساب
+              </Button>
+              <Button
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-xl py-4"
+                onClick={() => window.open("tel:+966111234567")}
+              >
+                <Phone className="w-5 h-5 ml-2" />
+                اتصال مباشر
+              </Button>
             </div>
-          </Card>
+          </motion.div>
         </div>
       </div>
     </section>

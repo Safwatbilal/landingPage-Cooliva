@@ -1,6 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
+import React from "react";
+import { motion } from "framer-motion";
 import {
   Phone,
   Mail,
@@ -9,8 +8,9 @@ import {
   Twitter,
   Instagram,
   Linkedin,
-  Snowflake,
-  Send,
+  ArrowUp,
+  Clock,
+  ChevronRight,
 } from "lucide-react";
 
 const Footer = () => {
@@ -24,159 +24,238 @@ const Footer = () => {
 
   const services = [
     "غرف التبريد والتجميد",
-    "عزل سيارات النقل المبرد",
+    "سيارات النقل المبرد",
     "وحدات التبريد الصناعية",
     "الصيانة والعقود",
-    "الاستشارات الفنية",
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "فيسبوك" },
-    { icon: Twitter, href: "#", label: "تويتر" },
-    { icon: Instagram, href: "#", label: "إنستغرام" },
-    { icon: Linkedin, href: "#", label: "لينكدإن" },
+    {
+      icon: Facebook,
+      href: "#",
+      label: "فيسبوك",
+      hoverColor: "hover:bg-blue-600",
+    },
+    {
+      icon: Twitter,
+      href: "#",
+      label: "تويتر",
+      hoverColor: "hover:bg-sky-500",
+    },
+    {
+      icon: Instagram,
+      href: "#",
+      label: "إنستجرام",
+      hoverColor: "hover:bg-pink-600",
+    },
+    {
+      icon: Linkedin,
+      href: "#",
+      label: "لينكد إن",
+      hoverColor: "hover:bg-blue-700",
+    },
   ];
 
+  const contactInfo = [
+    {
+      icon: MapPin,
+      text: "الرياض، حي النخيل، شارع الملك فهد",
+    },
+    {
+      icon: Clock,
+      text: "ساعات العمل: من 8:00 صباحاً إلى 6:00 مساءً",
+    },
+    {
+      icon: Phone,
+      text: ["966-11-123-4567+", "966-11-765-4321+"],
+    },
+    {
+      icon: Mail,
+      text: "info@cooling-company.com",
+    },
+  ];
+
+  const galleryImages = [
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=78&h=78&fit=crop", // Cold storage room
+    "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=78&h=78&fit=crop", // Refrigerated truck
+    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=78&h=78&fit=crop", // Industrial cooling unit
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=78&h=78&fit=crop", // Freezer installation
+    "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=78&h=78&fit=crop", // HVAC maintenance
+    "https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=78&h=78&fit=crop", // Commercial refrigeration
+  ];
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-primary text-white">
-      {/* Main Footer */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
-          {/* Company Info */}
-          <div className="space-y-6">
-            <div className="flex items-center space-x-reverse space-x-3">
-              <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
-                <Snowflake className="w-8 h-8 text-primary" />
-              </div>
-              <div>
-                <h3 className="text-xl font-bold">كوليفا للتبريد</h3>
-                <p className="text-white/80 text-sm">حلول التبريد المتكاملة</p>
-              </div>
+    <footer className="bg-gray-900 text-gray-300 pt-16 pb-0" dir="rtl ">
+      {/* Main Footer Content */}
+
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Company Info & Social */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="text-center md:text-right"
+          >
+            <div className="mb-6">
+              <img
+                src="/public/logo/PNG/MainLogo.png"
+                alt="شعار الشركة"
+                className="h-[300px] w-[300px] mb-4 mx-auto md:mx-0"
+              />
             </div>
 
-            <p className="text-white/90 leading-relaxed">
-              مؤسسة متخصصة في توريد وتركيب غرف التبريد والتجميد بجميع أنواعها،
-              نقدم خدمات متميزة بأعلى معايير الجودة والاحترافية.
-            </p>
-
-            {/* Contact Info */}
-            <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-secondary" />
-                <span className="text-white/90">+966 11 234 5678</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-secondary" />
-                <span className="text-white/90">info@cooliva-sa.com</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-secondary" />
-                <span className="text-white/90">
-                  الرياض، المملكة العربية السعودية
-                </span>
-              </div>
-            </div>
-          </div>
+            {/* Social Media Links */}
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-bold mb-6">روابط سريعة</h4>
-            <ul className="space-y-3">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="text-center md:text-right"
+          >
+            <ul className="space-y-0">
               {quickLinks.map((link, index) => (
-                <li key={index}>
+                <li
+                  key={index}
+                  className="py-4 border-b border-gray-600 last:border-b-0 transition-all duration-300 hover:pr-3 group"
+                >
                   <a
                     href={link.href}
-                    className="text-white/80 hover:text-secondary transition-colors duration-300 hover:translate-x-1 inline-block"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center justify-center md:justify-start"
                   >
+                    <ChevronRight
+                      size={16}
+                      className="text-blue-500 ml-3 flex-shrink-0 rotate-180"
+                    />
                     {link.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-bold mb-6">خدماتنا</h4>
-            <ul className="space-y-3">
-              {services.map((service, index) => (
-                <li
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="text-center md:text-right"
+          >
+            <div className="space-y-8">
+              {contactInfo.map((info, index) => (
+                <div
                   key={index}
-                  className="text-white/80 text-sm leading-relaxed"
+                  className="flex flex-col md:flex-row items-center md:items-start gap-3"
                 >
-                  {service}
-                </li>
+                  <info.icon
+                    size={24}
+                    className="text-blue-500 flex-shrink-0 mb-4 md:mb-0"
+                  />
+                  <div className="text-gray-400 leading-relaxed flex-1">
+                    {Array.isArray(info.text)
+                      ? info.text.map((item, i) => (
+                          <span key={i} className="block">
+                            {item}
+                          </span>
+                        ))
+                      : info.text}
+                  </div>
+                </div>
               ))}
-            </ul>
-          </div>
+            </div>
+          </motion.div>
 
-          {/* Newsletter */}
-          <div>
-            <h4 className="text-lg font-bold mb-6">
-              اشترك في النشرة الإخبارية
+          {/* Services Gallery */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h4 className="text-white text-lg font-bold mb-6 text-center md:text-right">
+              معرض أعمالنا
             </h4>
-            <p className="text-white/80 mb-4 text-sm">
-              احصل على آخر الأخبار والعروض الخاصة
-            </p>
-
-            <div className="flex gap-2 mb-6">
-              <Input
-                placeholder="أدخل بريدك الإلكتروني"
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/60 text-right"
-              />
-              <Button className="bg-secondary hover:bg-secondary/90 text-white">
-                <Send className="w-4 h-4" />
-              </Button>
+            <div className="grid grid-cols-3 gap-1">
+              {galleryImages.map((src, index) => (
+                <motion.div
+                  key={index}
+                  className="overflow-hidden"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src={src}
+                    alt={`معرض ${index + 1}`}
+                    className="w-full h-20 object-cover border-2 border-white hover:opacity-80 transition-opacity duration-300"
+                  />
+                </motion.div>
+              ))}
             </div>
 
-            {/* Social Media */}
-            <div>
-              <h5 className="font-semibold mb-4">تابعنا على</h5>
-              <div className="flex items-center gap-3">
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="w-10 h-10 bg-white/10 hover:bg-secondary transition-all duration-300 rounded-full flex items-center justify-center group"
-                    aria-label={social.label}
-                  >
-                    <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  </a>
-                ))}
-              </div>
+            <div className="flex justify-center md:justify-start gap-2 mt-5">
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.href}
+                  className={`bg-gray-700 text-gray-400 w-12 h-12 flex items-center justify-center text-xl transition-all duration-300 ${social.hoverColor}`}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  aria-label={social.label}
+                >
+                  <social.icon size={20} />
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
-      <Separator className="bg-white/20" />
+      {/* Bottom Bar */}
+      <div className="bg-gray-800 border-t border-gray-600 py-6">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="text-sm text-gray-400 text-center md:text-right order-2 md:order-1">
+              <p>
+                <span className="font-bold text-gray-500 ml-2">COOLIVA</span>{" "}
+                جميع الحقوق محفوظة © 2025
+              </p>
+            </div>
 
-      {/* Bottom Footer */}
-      <div className="container mx-auto px-4 py-6">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-white/80 text-sm text-center md:text-right">
-            © 2024 كوليفا للتبريد. جميع الحقوق محفوظة.
-          </div>
+            <div className="flex items-center gap-6 text-sm order-1 md:order-2">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-blue-500 transition-colors"
+              >
+                سياسة الخصوصية
+              </a>
+              <a
+                href="#"
+                className="text-gray-400 hover:text-blue-500 transition-colors"
+              >
+                الشروط والأحكام
+              </a>
+            </div>
 
-          <div className="flex items-center gap-6 text-sm">
-            <a
-              href="#"
-              className="text-white/80 hover:text-secondary transition-colors"
+            {/* Scroll to Top Button */}
+            <motion.button
+              onClick={scrollToTop}
+              className="bg-blue-600 hover:bg-blue-700 p-3 rounded-full text-white shadow-lg order-3"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="العودة للأعلى"
             >
-              سياسة الخصوصية
-            </a>
-            <a
-              href="#"
-              className="text-white/80 hover:text-secondary transition-colors"
-            >
-              الشروط والأحكام
-            </a>
-            <a
-              href="#"
-              className="text-white/80 hover:text-secondary transition-colors"
-            >
-              سياسة الاستبدال والاسترداد
-            </a>
+              <ArrowUp className="w-5 h-5" />
+            </motion.button>
           </div>
         </div>
       </div>

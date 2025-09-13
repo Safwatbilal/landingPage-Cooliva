@@ -1,125 +1,152 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Award, Clock, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 const About = () => {
   const features = [
     {
-      icon: Award,
-      title: "جودة عالية",
-      description: "نستخدم أفضل المواد والتقنيات الحديثة في جميع مشاريعنا",
+      id: 1,
+      title: "الخدمات الرئيسية",
+      description:
+        "تصميم وتوريد وتركيب غرف التبريد والتجميد. عزل سيارات النقل المبرد وتجهيزها بأنظمة تبريد حديثة.",
+      image:
+        "https://images.unsplash.com/photo-1614358612763-6d65704fbf64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // غرفة تبريد
+      color: "red",
+      bgColor: "bg-red-500",
+      textColor: "text-red-500",
+      borderColor: "border-red-500",
+      link: "#services",
     },
     {
-      icon: Clock,
-      title: "سرعة الاستجابة",
-      description: "فريق دعم فني جاهز لحل أي مشكلة في وقت قياسي",
+      id: 2,
+      title: "مشاريعنا المنجزة",
+      description:
+        "نفخر بتنفيذ مئات المشاريع الناجحة في مختلف القطاعات. مشاريع متنوعة تشمل المطاعم والفنادق والمستشفيات والمصانع.",
+      image:
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // مشاريع ومباني
+      color: "teal",
+      bgColor: "bg-teal-600",
+      textColor: "text-teal-600",
+      borderColor: "border-teal-600",
+      link: "#projects",
     },
     {
-      icon: Users,
-      title: "فريق متخصص",
-      description: "خبراء في مجال التبريد والتجميد مع سنوات من الخبرة",
+      id: 3,
+      title: "كيف نعمل",
+      description:
+        "منهجية عمل احترافية تبدأ بالدراسة والتخطيط، ثم التنفيذ بأعلى المعايير، وتنتهي بالمتابعة والصيانة الدورية.",
+      image:
+        "https://images.unsplash.com/photo-1581092795360-fd1ca04f9b28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // فريق عمل
+      color: "blue",
+      bgColor: "bg-blue-500",
+      textColor: "text-blue-500",
+      borderColor: "border-blue-500",
+      link: "#work",
     },
-  ];
-
-  const strengths = [
-    "خبرة واسعة في تنفيذ مشاريع التبريد والتجميد",
-    "استخدام أحدث التقنيات والمعدات العالمية",
-    "التزام بالمواعيد المحددة وجودة التنفيذ",
-    "أسعار تنافسية مع ضمان مستمر",
-    "خدمة ما بعد البيع والصيانة الدورية",
-    "فريق عمل مدرب ومؤهل",
   ];
 
   return (
-    <section id="about" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-white">من نحن</Badge>
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            نحن شركة رائدة في مجال
-            <span className="text-primary"> التبريد والتجميد</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            مؤسسة متخصصة في توريد وتركيب غرف التبريد والتجميد بجميع أنواعها،
-            نعمل على تقديم خدمات متميزة تلبي احتياجات عملائنا في مختلف القطاعات
+    <section id="about" className="py-20 bg-white" dir="rtl">
+      <h2 className="main-title">من نحن</h2>
+
+      <div className="container mx-auto px-4 mb-16">
+        <motion.div
+          initial={{ y: 30, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center max-w-4xl mx-auto mb-12"
+        >
+          <p className="text-xl text-gray-700 leading-relaxed">
+            نحن شركة متخصصة في أنظمة التبريد والتجميد مع خبرة واسعة في تنفيذ
+            المشاريع وفق أعلى معايير الجودة.
           </p>
-        </div>
+        </motion.div>
+      </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Company Info */}
-          <div className="animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-foreground">
-              رؤيتنا ورسالتنا
-            </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              نسعى لأن نكون الخيار الأول في مجال حلول التبريد والتجميد، من خلال
-              تقديم خدمات متكاملة تتميز بالجودة العالية والابتكار، مع الالتزام
-              بالمعايير العالمية والاستدامة البيئية.
-            </p>
-            <p className="text-muted-foreground mb-8 leading-relaxed">
-              رسالتنا هي تقديم حلول تبريد مبتكرة وموثوقة تساعد عملاءنا على تحقيق
-              أهدافهم التشغيلية بكفاءة عالية، مع ضمان أعلى مستويات الخدمة والدعم
-              الفني.
-            </p>
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.id}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group border border-gray-300 text-center overflow-hidden hover:shadow-2xl transition-all duration-500"
+            >
+              {/* Image Container */}
+              <div className="relative overflow-hidden">
+                {/* Overlay */}
+                <div
+                  className={`absolute inset-0 ${
+                    feature.color === "red"
+                      ? "bg-red-500/60"
+                      : feature.color === "teal"
+                      ? "bg-teal-600/60"
+                      : "bg-blue-500/60"
+                  } z-10`}
+                ></div>
 
-            {/* Strengths */}
-            <div className="space-y-3">
-              {strengths.map((strength, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-foreground">{strength}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+                {/* Triangle Effect */}
+                <div
+                  className="absolute bottom-0 right-0 w-0 h-0 border-solid border-transparent border-b-white transition-all duration-500 group-hover:border-r-0 group-hover:border-l-[500px] group-hover:border-b-[170px] z-20"
+                  style={{
+                    borderBottomWidth: "170px",
+                    borderLeftWidth: "500px",
+                    borderRightWidth: "0px",
+                  }}
+                ></div>
 
-          {/* Features Cards */}
-          <div className="space-y-6 animate-slide-in-right">
-            {features.map((feature, index) => (
-              <Card
-                key={index}
-                className="hover:shadow-elegant transition-all duration-300 border-l-4 border-l-primary"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-primary rounded-full flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-lg mb-2 text-foreground">
-                        {feature.title}
-                      </h4>
-                      <p className="text-muted-foreground">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+                <img
+                  src={feature.image}
+                  alt={feature.title}
+                  className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+              </div>
 
-        {/* Stats Section */}
-        <div className="bg-gradient-primary rounded-2xl p-8 text-center">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="animate-fade-in">
-              <div className="text-4xl font-bold text-white mb-2">500+</div>
-              <div className="text-white/90">مشروع منجز بنجاح</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="text-4xl font-bold text-white mb-2">15+</div>
-              <div className="text-white/90">سنة من الخبرة</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <div className="text-4xl font-bold text-white mb-2">200+</div>
-              <div className="text-white/90">عميل راضٍ</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-4xl font-bold text-white mb-2">24/7</div>
-              <div className="text-white/90">دعم فني متواصل</div>
-            </div>
-          </div>
+              {/* Content */}
+              <div className="p-6">
+                <h3 className={`relative text-3xl font-bold mb-8 inline-block`}>
+                  {feature.title}
+                  <span
+                    className={`absolute bottom-0 left-4 right-4 h-1 ${
+                      feature.color === "red"
+                        ? "bg-red-500"
+                        : feature.color === "teal"
+                        ? "bg-teal-600"
+                        : "bg-blue-500"
+                    } -mb-5`}
+                  ></span>
+                </h3>
+
+                <p className="text-gray-600 text-lg leading-8 mb-8 px-2">
+                  {feature.description}
+                </p>
+
+                <a
+                  href={feature.link}
+                  className={`inline-block border-3 ${feature.borderColor} ${feature.textColor} font-bold text-xl px-8 py-3 rounded-md transition-all duration-500 relative overflow-hidden group/link`}
+                  style={{
+                    background: `linear-gradient(to right, ${
+                      feature.color === "red"
+                        ? "#f44036"
+                        : feature.color === "teal"
+                        ? "#009688"
+                        : "#03a9f4"
+                    } 50%, white 50%)`,
+                    backgroundSize: "200% 100%",
+                    backgroundPosition: "right bottom",
+                  }}
+                >
+                  <span className="relative z-10 group-hover/link:text-white transition-colors duration-500">
+                    اقرأ المزيد
+                  </span>
+                  <div
+                    className={`absolute inset-0 ${feature.bgColor} transform scale-x-0 group-hover/link:scale-x-100 transition-transform duration-500 origin-left`}
+                  ></div>
+                </a>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

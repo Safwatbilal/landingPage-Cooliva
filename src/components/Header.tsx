@@ -98,7 +98,9 @@ const Header = () => {
                     size="sm"
                     className="bg-gray-900 hover:bg-gray-800 !text-white rounded-xl font-medium"
                   >
-                    اطلب عرض سعر
+                    <a href="#discount" className="block w-full h-full">
+                      اطلب عرض سعر
+                    </a>
                   </Button>
                 </div>
               </div>

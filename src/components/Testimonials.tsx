@@ -1,156 +1,135 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
+import { Star } from "lucide-react";
 
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "أحمد المحمد",
-      position: "مدير مطاعم الذواقة",
-      company: "سلسلة مطاعم الذواقة",
+      id: 1,
+      name: "أحمد المالكي",
+      title: "مدير مطاعم الواحة",
+      company: "مجموعة الواحة للمطاعم",
+      content:
+        "خدمة ممتازة وجودة عالية في التنفيذ. تم تركيب غرف التبريد في مطاعمنا بمهنية عالية وفي الوقت المحدد. فريق العمل محترف جداً والصيانة ممتازة.",
       rating: 5,
-      text: "خدمة متميزة وجودة عالية في تنفيذ مشاريع التبريد. الفريق محترف والالتزام بالمواعيد ممتاز. أنصح بالتعامل معهم بقوة.",
       image:
-        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "سارة العتيبي",
-      position: "مديرة المشتريات",
-      company: "مصانع الألبان المتحدة",
-      rating: 5,
-      text: "تعاملنا معهم في مشروع كبير لتجهيز مصنع الألبان وكانت النتيجة فوق التوقعات. السرعة والجودة والأسعار التنافسية كلها مميزات رائعة.",
-      image:
-        "https://images.unsplash.com/photo-1494790108755-2616b612b1-47ff4e?w=100&h=100&fit=crop&crop=face",
-    },
-    {
-      name: "محمد الراشد",
-      position: "مدير العمليات",
-      company: "شركة النقل البارد",
-      rating: 5,
-      text: "أفضل شركة تعاملت معها في مجال عزل وتجهيز سيارات النقل المبرد. الخدمة ممتازة والدعم الفني متواصل.",
-      image:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-    },
-    {
+      id: 2,
       name: "فاطمة الزهراني",
-      position: "مالكة",
-      company: "سوبر ماركت الزهراني",
+      title: "مديرة المشتريات",
+      company: "مستشفى الملك فيصل",
+      content:
+        "نثق بهم في تبريد الأدوية والمستحضرات الطبية. النظام يعمل بكفاءة عالية منذ 3 سنوات بدون أي مشاكل. الدعم الفني متاح دائماً والاستجابة سريعة.",
       rating: 5,
-      text: "تركيب غرف التبريد تم بمهنية عالية وبأسعار معقولة. فريق العمل مدرب جيداً وخدمة ما بعد البيع ممتازة.",
       image:
-        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1494790108755-2616c6b46043?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "خالد البراك",
-      position: "مدير المشاريع",
-      company: "شركة المواد الغذائية الكبرى",
+      id: 3,
+      name: "محمد العتيبي",
+      title: "المدير التنفيذي",
+      company: "مصنع الأغذية المتطورة",
+      content:
+        "شركة موثوقة ومتخصصة. نفذوا لنا نظام تبريد صناعي كامل بطاقة إنتاجية عالية. الجودة فاقت توقعاتنا والسعر كان مناسب جداً مقارنة بالمنافسين.",
       rating: 5,
-      text: "شركة موثوقة ومتخصصة. نفذوا لنا مشروع ضخم لتجهيز مستودعات التبريد وتسليمه في الوقت المحدد تماماً.",
       image:
-        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=150&q=80",
     },
     {
-      name: "نورا القحطاني",
-      position: "مديرة التشغيل",
-      company: "فندق المرجان",
-      rating: 5,
-      text: "خدمة الصيانة والدعم الفني ممتازة. يردون على أي مشكلة بسرعة البرق وحلولهم دائماً فعالة.",
+      id: 4,
+      name: "سارة القحطاني",
+      title: "مالكة محل الحلويات",
+      company: "حلويات القحطاني",
+      content:
+        "تعاملت معهم في تجهيز محل الحلويات بغرف عرض مبردة. النتيجة رائعة والحلويات تحافظ على جودتها لفترة أطول. خدمة العملاء ممتازة والأسعار معقولة.",
+      rating: 4,
       image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face",
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=150&q=80",
+    },
+    {
+      id: 5,
+      name: "عبدالله الراشد",
+      title: "مدير العمليات",
+      company: "سوبر ماركت الراشد",
+      content:
+        "أفضل شركة تبريد تعاملنا معها. جهزوا لنا 20 فرع بأنظمة تبريد متطورة. التوفير في فاتورة الكهرباء ملحوظ والأنظمة تعمل بكفاءة عالية.",
+      rating: 3,
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80",
+    },
+    {
+      id: 6,
+      name: "نورا الشمري",
+      title: "مديرة المشاريع",
+      company: "فندق الياسمين",
+      content:
+        "نفذوا لنا أنظمة تبريد لمطبخ الفندق وغرف التخزين. المشروع اكتمل في الوقت المحدد والجودة عالية جداً. فريق العمل ملتزم ومحترف.",
+      rating: 3,
+      image:
+        "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=150&q=80",
     },
   ];
 
-  return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-white">
-            آراء عملائنا
-          </Badge>
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            ماذا يقول
-            <span className="text-primary"> عملاؤنا</span> عنا؟
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            نفخر بثقة عملائنا وتقديرهم لخدماتنا المتميزة في مجال التبريد
-            والتجميد
-          </p>
-        </div>
+  const renderStars = (rating: number) => {
+    return [...Array(5)].map((_, index) => (
+      <Star
+        key={index}
+        size={16}
+        className={
+          index < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-300"
+        }
+      />
+    ));
+  };
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+  return (
+    <section className="py-20 bg-gray-50" dir="rtl">
+      <div className="main-title">آراء العملاء</div>
+
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {testimonials.map((testimonial, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-elegant transition-all duration-500 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+            <motion.div
+              key={testimonial.id}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="relative bg-white p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
             >
-              <CardContent className="p-6">
-                {/* Quote Icon */}
-                <div className="mb-4">
-                  <Quote className="w-8 h-8 text-primary/30" />
-                </div>
+              {/* Profile Image */}
+              <img
+                src={testimonial.image}
+                alt={testimonial.name}
+                className="absolute -top-12 right-2 w-25 h-25 rounded-full border-10 border-gray-50 object-cover"
+              />
+
+              {/* Content */}
+              <div className="pt-16">
+                {/* Name and Title */}
+                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                  {testimonial.name}
+                </h3>
+                <span className="text-gray-600 text-sm block mb-2">
+                  {testimonial.title}
+                </span>
+                <span className="text-primary text-sm font-medium block mb-4">
+                  {testimonial.company}
+                </span>
 
                 {/* Rating */}
                 <div className="flex items-center gap-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                    />
-                  ))}
+                  {renderStars(testimonial.rating)}
                 </div>
 
-                {/* Testimonial Text */}
-                <p className="text-muted-foreground mb-6 leading-relaxed italic">
-                  "{testimonial.text}"
+                {/* Review Text */}
+                <p className="text-gray-600 leading-relaxed text-sm">
+                  {testimonial.content}
                 </p>
-
-                {/* Customer Info */}
-                <div className="flex items-center gap-4">
-                  <img
-                    src={testimonial.image}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <h4 className="font-bold text-foreground">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {testimonial.position}
-                    </p>
-                    <p className="text-sm text-primary font-medium">
-                      {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+            </motion.div>
           ))}
-        </div>
-
-        {/* Stats */}
-        <div className="bg-card rounded-2xl p-8 shadow-lg">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">رضا العملاء</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">عميل سعيد</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-muted-foreground">دعم مستمر</div>
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "0.6s" }}>
-              <div className="text-3xl font-bold text-primary mb-2">15+</div>
-              <div className="text-muted-foreground">سنة خبرة</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

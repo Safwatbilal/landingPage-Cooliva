@@ -1,164 +1,200 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, MapPin, Calendar, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  MapPin,
+  Calendar,
+  User,
+  ExternalLink,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 
 const Projects = () => {
   const projects = [
     {
-      title: "مجمع غرف التبريد - الرياض",
-      location: "الرياض، المملكة العربية السعودية",
-      date: "2024",
-      type: "غرف تبريد",
+      id: 1,
+      title: "مجمع تجاري كبير - الرياض",
       description:
-        "تصميم وتركيب 12 غرفة تبريد وتجميد لمجمع تجاري كبير بمساحة إجمالية 2000 متر مربع",
+        "تنفيذ نظام تبريد متكامل لمجمع تجاري يضم 50 متجر ومطعم مع غرف تبريد مركزية وأنظمة توفير الطاقة المتقدمة",
       image:
-        "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1555636222-cae831e670b3?auto=format&fit=crop&w=800&q=80",
+      category: "تجاري",
+      location: "الرياض",
+      year: "2024",
+      client: "مجموعة الراشد التجارية",
       features: [
-        "ساندوتش بنل عالي الكفاءة",
-        "أنظمة تحكم ذكية",
-        "عزل حراري متطور",
-        "ضمان 5 سنوات",
+        "15 غرفة تبريد متنوعة",
+        "نظام مراقبة ذكي",
+        "توفير 40% في استهلاك الطاقة",
       ],
     },
     {
-      title: "أسطول سيارات النقل المبرد",
-      location: "جدة، المملكة العربية السعودية",
-      date: "2024",
-      type: "سيارات نقل مبرد",
+      id: 2,
+      title: "مستشفى المملكة - جدة",
       description:
-        "عزل وتجهيز 25 سيارة نقل مبرد بوحدات تبريد متطورة لشركة توزيع المواد الغذائية",
+        "تجهيز غرف تبريد للأدوية والمستحضرات الطبية مع أنظمة أمان متقدمة وأنظمة إنذار طوارئ متطورة",
       image:
-        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80",
+      category: "طبي",
+      location: "جدة",
+      year: "2024",
+      client: "مستشفى المملكة",
       features: [
-        "وحدات تبريد عالية الكفاءة",
-        "مراقبة درجة الحرارة",
-        "عزل متعدد الطبقات",
-        "صيانة شاملة",
+        "غرف تبريد دقيقة للأدوية",
+        "إنذار طوارئ متطور",
+        "نسخ احتياطية للطاقة",
       ],
     },
     {
-      title: "مصنع الألبان - الدمام",
-      location: "الدمام، المملكة العربية السعودية",
-      date: "2023",
-      type: "وحدات تبريد صناعية",
+      id: 3,
+      title: "مصنع الأغذية المجمدة - الدمام",
       description:
-        "تركيب نظام تبريد متكامل لمصنع ألبان بطاقة إنتاجية 50 طن يومياً",
+        "إنشاء مجمع تجميد صناعي بطاقة 1000 طن مع خطوط إنتاج متكاملة وأنظمة تحكم آلي كامل",
       image:
-        "https://images.unsplash.com/photo-1563379091863-c4d49d812db2?w=600&h=400&fit=crop",
-      features: [
-        "كمبريسورات صناعية",
-        "أنظمة تحكم مركزية",
-        "كفاءة طاقة عالية",
-        "صيانة دورية",
-      ],
+        "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=800&q=80",
+      category: "صناعي",
+      location: "الدمام",
+      year: "2023",
+      client: "شركة الأغذية المتطورة",
+      features: ["مجمد صناعي عملاق", "خطوط إنتاج مبردة", "تحكم آلي كامل"],
     },
     {
-      title: "سلسلة مطاعم - مكة المكرمة",
-      location: "مكة المكرمة، المملكة العربية السعودية",
-      date: "2023",
-      type: "حلول تبريد متكاملة",
+      id: 4,
+      title: "سلسلة مطاعم فاخرة - الرياض",
       description:
-        "تجهيز 8 فروع مطاعم بأنظمة تبريد وتجميد شاملة مع خدمات الصيانة",
+        "تجهيز 12 فرع لسلسلة مطاعم فاخرة بأنظمة تبريد متطورة وغرف تخزين مبردة عالية الكفاءة",
       image:
-        "https://images.unsplash.com/photo-1577308856961-8e0ac271e5de?w=600&h=400&fit=crop",
-      features: ["تصميم مخصص", "كفاءة عالية", "تشغيل هادئ", "دعم فني مستمر"],
+        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
+      category: "مطاعم",
+      location: "الرياض",
+      year: "2023",
+      client: "مجموعة المذاق الراقي",
+      features: ["12 فرع متكامل", "تبريد سريع", "كفاءة عالية"],
+    },
+    {
+      id: 5,
+      title: "مركز التوزيع المبرد - جدة",
+      description:
+        "إنشاء مركز توزيع مبرد بمساحة 5000 متر مربع مع أحدث أنظمة إدارة المخزون المبرد",
+      image:
+        "https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=800&q=80",
+      category: "لوجستي",
+      location: "جدة",
+      year: "2023",
+      client: "شركة التوزيع السريع",
+      features: ["مساحة 5000 متر", "إدارة ذكية", "توزيع سريع"],
+    },
+    {
+      id: 6,
+      title: "فندق خمس نجوم - مكة",
+      description:
+        "تجهيز مطابخ فندق 5 نجوم بأنظمة تبريد احترافية وغرف تخزين متعددة الأغراض",
+      image:
+        "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80",
+      category: "ضيافة",
+      location: "مكة المكرمة",
+      year: "2024",
+      client: "فندق الحرمين الشريف",
+      features: ["مطابخ احترافية", "تخزين متعدد", "خدمة 24/7"],
     },
   ];
 
   return (
-    <section id="projects" className="py-20 bg-background">
+    <section id="projects" className="py-20 " dir="rtl">
+      <div className="main-title">مشاريعنا المنجزة</div>
+
       <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-gradient-primary text-white">
-            مشاريعنا
-          </Badge>
-          <h2 className="text-4xl font-bold mb-6 text-foreground">
-            مشاريع نفخر
-            <span className="text-primary"> بإنجازها</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            اطلع على باقة من مشاريعنا المنجزة بنجاح والتي تعكس خبرتنا وجودة
-            خدماتنا في مجال التبريد والتجميد
-          </p>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-elegant transition-all duration-500 overflow-hidden animate-fade-in"
-              style={{ animationDelay: `${index * 0.2}s` }}
+            <motion.div
+              key={project.id}
+              initial={{ y: 50, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="group relative px-8 py-4"
             >
-              <div className="relative overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 right-4">
-                  <Badge className="bg-gradient-primary text-white">
-                    {project.type}
-                  </Badge>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+              {/* Background Layers */}
+              <div className="absolute right-4 top-4 w-[calc(100%-80px)] h-[calc(100%-32px)] bg-gray-100 rounded-lg -z-20 transition-all duration-500"></div>
+              <div className="absolute right-4 top-4 w-0 h-[calc(100%-32px)] bg-gray-200 rounded-lg -z-10 transition-all duration-500 group-hover:w-[calc(100%-80px)]"></div>
 
-              <CardContent className="p-6">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                  <MapPin className="w-4 h-4" />
-                  <span>{project.location}</span>
-                  <span>•</span>
-                  <Calendar className="w-4 h-4" />
-                  <span>{project.date}</span>
-                </div>
+              {/* Main Content */}
+              <div className="relative">
+                {/* Image and Social Section */}
+                <div className="flex items-center pt-4">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-[calc(100%-80px)] h-48 object-cover rounded-lg transition-all duration-500 group-hover:grayscale"
+                  />
 
-                <h3 className="text-xl font-bold mb-3 text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </h3>
-
-                <p className="text-muted-foreground mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="grid grid-cols-2 gap-2 mb-6">
-                  {project.features.map((feature, featureIndex) => (
-                    <div
-                      key={featureIndex}
-                      className="flex items-center gap-2 text-sm"
+                  {/* Social Links */}
+                  <div className=" w-16 flex flex-col items-center gap-3 ">
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
                     >
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
-                    </div>
-                  ))}
+                      <ExternalLink
+                        size={18}
+                        className="text-gray-500 hover:text-primary"
+                      />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
+                    >
+                      <Instagram
+                        size={18}
+                        className="text-gray-500 hover:text-primary"
+                      />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
+                    >
+                      <Linkedin
+                        size={18}
+                        className="text-gray-500 hover:text-primary"
+                      />
+                    </a>
+                    <a
+                      href="#"
+                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
+                    >
+                      <Youtube
+                        size={18}
+                        className="text-gray-500 hover:text-primary"
+                      />
+                    </a>
+                  </div>
                 </div>
 
-                <Button variant="outline" className="group w-full">
-                  عرض تفاصيل المشروع
-                  <ArrowLeft className="w-4 h-4 mr-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+                {/* Project Info */}
+                <div className="pr-4 pt-4 pb-4">
+                  <h3 className="text-lg font-bold text-primary mb-2 transition-colors group-hover:text-gray-600 leading-6">
+                    {project.title}
+                  </h3>
 
-        {/* CTA Section */}
-        <div className="bg-gradient-primary rounded-3xl p-8 text-center">
-          <h3 className="text-3xl font-bold text-white mb-4">
-            هل لديك مشروع جديد؟
-          </h3>
-          <p className="text-white/90 mb-6 max-w-2xl mx-auto">
-            نحن مستعدون لتنفيذ مشروعك القادم بأعلى معايير الجودة والاحترافية
-          </p>
-          <Button
-            size="lg"
-            className="bg-white text-primary hover:bg-white/90 hover:shadow-glow transition-all duration-300"
-          >
-            ابدأ مشروعك الآن
-            <ArrowLeft className="w-5 h-5 mr-2" />
-          </Button>
+                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
+                    <div className="flex items-center gap-1">
+                      <MapPin size={14} />
+                      <span>{project.location}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Calendar size={14} />
+                      <span>{project.year}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-sm text-gray-600 mb-3">
+                    <User size={14} />
+                    <span>{project.client}</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
