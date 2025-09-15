@@ -33,14 +33,14 @@ const RequestDiscount = () => {
   };
 
   return (
-    <section id="discount" dir="rtl">
+    <section id="discount" dir="rtl" className="relative z-20 bg-transparent">
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
         {/* Content Side */}
         <motion.div
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-br from-primary to-primary/80 text-white p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden"
+          className="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white p-8 lg:p-12 flex flex-col justify-center relative overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-full h-full opacity-10">
             <div className="absolute top-10 right-10 w-32 h-32 bg-white rounded-full"></div>
@@ -110,7 +110,7 @@ const RequestDiscount = () => {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="p-8 lg:p-12 flex flex-col justify-center"
+          className="bg-white/95 backdrop-blur-sm p-8 lg:p-12 flex flex-col justify-center shadow-lg"
         >
           <div className="max-w-md mx-auto w-full">
             <motion.h2
@@ -132,53 +132,53 @@ const RequestDiscount = () => {
               className="space-y-6"
             >
               <div className="relative">
-                <User className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <User className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="الاسم الكامل"
-                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-right bg-gray-50 focus:bg-white"
+                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-right bg-white/80 focus:bg-white shadow-sm"
                   required
                 />
               </div>
 
               <div className="relative">
-                <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Mail className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="البريد الإلكتروني"
-                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-right bg-gray-50 focus:bg-white"
+                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-right bg-white/80 focus:bg-white shadow-sm"
                   required
                 />
               </div>
 
               <div className="relative">
-                <Phone className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Phone className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-5 h-5" />
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="رقم الهاتف"
-                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-right bg-gray-50 focus:bg-white"
+                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-right bg-white/80 focus:bg-white shadow-sm"
                   required
                 />
               </div>
 
               <div className="relative">
-                <MessageSquare className="absolute right-4 top-6 text-gray-400 w-5 h-5" />
+                <MessageSquare className="absolute right-4 top-6 text-gray-500 w-5 h-5" />
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   placeholder="أخبرنا عن احتياجاتك ونوع المشروع"
                   rows={4}
-                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-200 rounded-xl focus:border-primary focus:outline-none transition-colors text-right bg-gray-50 focus:bg-white resize-none"
+                  className="w-full pr-12 pl-4 py-4 border-2 border-gray-300 rounded-xl focus:border-blue-500 focus:outline-none transition-colors text-right bg-white/80 focus:bg-white resize-none shadow-sm"
                   required
                 />
               </div>
@@ -187,7 +187,7 @@ const RequestDiscount = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 type="submit"
-                className="w-full bg-primary hover:bg-primary/90 text-white py-4 px-6 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl"
+                className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 cursor-pointer text-white w-full font-semibold px-8 py-4 rounded-lg hover:scale-105 transition-all duration-300 min-w-[200px] text-center inline-flex items-center justify-center gap-2 shadow-lg"
               >
                 إرسال الطلب
                 <Send className="w-5 h-5" />

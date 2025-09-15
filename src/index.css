@@ -71,14 +71,7 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
-.gradient {
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--secondary) 50%,
-    var(--tertiary) 100%
-  );
-}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
 
@@ -162,16 +155,12 @@ button:focus-visible {
 }
 .main-title {
   text-transform: uppercase;
-  margin: 0 auto 80px;
-  border: 2px solid black;
-  padding: 10px 20px;
-  font-size: 30px;
+  margin: 0 auto 40px;
+
   width: fit-content;
   position: relative;
-  z-index: 1;
-  transition: 0.5s;
 }
-.main-title::before,
+/* .main-title::before,
 .main-title::after {
   content: "";
   width: 12px;
@@ -181,8 +170,8 @@ button:focus-visible {
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
-}
-.main-title::before {
+} */
+/* .main-title::before {
   left: -30px;
 }
 .main-title::after {
@@ -200,7 +189,7 @@ button:focus-visible {
   color: white;
   border: 2px solid white;
   transition-delay: 0.5s;
-}
+} */
 html {
   scroll-behavior: smooth;
 }
@@ -255,6 +244,18 @@ html {
   --tertiary: #a5fecb;
   --tertiary-foreground: #000000;
 }
+.gradient {
+  background: linear-gradient(
+    to bottom right,
+    #5433ff,
+    /* بنفسجي */ #20bdff,
+    /* أزرق */ #a5fecb /* تركوازي/أخضر فاتح */
+  );
+}
+
+.button {
+  @apply bg-gradient-to-r from-primary to-secondary text-white font-semibold px-8 py-4 rounded-lg hover:scale-105 transition-transform duration-300 min-w-[200px] text-center inline-block;
+}
 
 .dark {
   --primary: #5433ff;
@@ -287,8 +288,6 @@ html {
   --chart-1: oklch(0.6702 0.2462 356.4);
 
   --primary-foreground: oklch(0.985 0.002 247.839);
-
-  --secondary: oklch(0.967 0.003 264.542);
 
   --secondary-foreground: oklch(0.21 0.034 264.665);
 

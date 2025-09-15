@@ -8,8 +8,11 @@ import {
   Twitter,
   Linkedin,
   Youtube,
+  Sparkles,
 } from "lucide-react";
-
+import { Card, CardContent } from "./ui/card";
+import Squares from "./bits/Galaxy";
+import LightRays from "./bits/lights";
 const Projects = () => {
   const projects = [
     {
@@ -101,100 +104,124 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 " dir="rtl">
-      <div className="main-title">مشاريعنا المنجزة</div>
+    <section
+      id="projects"
+      className="relative py-10 bg-gray-900 min-h-screen"
+      dir="rtl"
+    >
+      {/* Dark background with galaxy effect */}
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#20bdff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
+      </div>
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysOrigin="bottom-center"
+          raysColor="#20bdff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
+      </div>
 
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="group relative px-8 py-4"
-            >
-              {/* Background Layers */}
-              <div className="absolute right-4 top-4 w-[calc(100%-80px)] h-[calc(100%-32px)] bg-gray-100 rounded-lg -z-20 transition-all duration-500"></div>
-              <div className="absolute right-4 top-4 w-0 h-[calc(100%-32px)] bg-gray-200 rounded-lg -z-10 transition-all duration-500 group-hover:w-[calc(100%-80px)]"></div>
+      <div className="relative z-10 text-center mb-16">
+        <div className="text-center mb-16">
+          {/* Dark mode header with glowing effect */}
+          <div className="inline-flex items-center gap-3 gradient text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 hover:rotate-1">
+            <Sparkles className="w-6 h-6 animate-spin text-slate-400" />
+            <span className="drop-shadow-lg">مشاريعنا المنجزة</span>
+            <Sparkles
+              className="w-6 h-6 animate-spin "
+              style={{ animationDelay: "0.5s" }}
+            />
+          </div>
 
-              {/* Main Content */}
-              <div className="relative">
-                {/* Image and Social Section */}
-                <div className="flex items-center pt-4">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-[calc(100%-80px)] h-48 object-cover rounded-lg transition-all duration-500 group-hover:grayscale"
-                  />
+          {/* Dark mode description */}
+          <p className="mt-6 text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed drop-shadow-sm">
+            نقدم مجموعة من المشاريع المنجزة التي تعكس خبرتنا وجودة عملنا في
+            تصميم وتنفيذ حلول التبريد الحديثة.
+          </p>
+        </div>
 
-                  {/* Social Links */}
-                  <div className=" w-16 flex flex-col items-center gap-3 ">
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
-                    >
-                      <ExternalLink
-                        size={18}
-                        className="text-gray-500 hover:text-primary"
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+              >
+                {/* Dark mode card with enhanced styling */}
+                <Card className="group relative overflow-hidden bg-gray-800/90 border border-gray-700/50 backdrop-blur-sm hover:bg-gray-800 transition-all duration-300 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10">
+                  {/* Enhanced background layers for dark mode */}
+                  <div className="absolute right-4 top-4 w-[calc(100%-80px)] h-[calc(100%-32px)] bg-gray-700/50 rounded-lg -z-20 transition-all duration-500 group-hover:bg-gray-600/30"></div>
+                  <div className="absolute right-4 top-4 w-0 h-[calc(100%-32px)] bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-lg -z-10 transition-all duration-500 group-hover:w-[calc(100%-80px)]"></div>
+
+                  <CardContent className="p-4 relative z-10">
+                    {/* Image with dark mode overlay */}
+                    <div className="flex items-center justify-center mb-4 relative ">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-48 object-cover rounded-lg transition-all duration-500 group-hover:scale-105 group-hover:brightness-110"
                       />
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
-                    >
-                      <Instagram
-                        size={18}
-                        className="text-gray-500 hover:text-primary"
-                      />
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
-                    >
-                      <Linkedin
-                        size={18}
-                        className="text-gray-500 hover:text-primary"
-                      />
-                    </a>
-                    <a
-                      href="#"
-                      className="w-8 h-8 flex items-center justify-center hover:text-primary transition-colors"
-                    >
-                      <Youtube
-                        size={18}
-                        className="text-gray-500 hover:text-primary"
-                      />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Project Info */}
-                <div className="pr-4 pt-4 pb-4">
-                  <h3 className="text-lg font-bold text-primary mb-2 transition-colors group-hover:text-gray-600 leading-6">
-                    {project.title}
-                  </h3>
-
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-2">
-                    <div className="flex items-center gap-1">
-                      <MapPin size={14} />
-                      <span>{project.location}</span>
+                      <div className="absolute inset-0 bg-black/20 rounded-lg transition-all duration-500 group-hover:bg-black/10"></div>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Calendar size={14} />
-                      <span>{project.year}</span>
-                    </div>
-                  </div>
 
-                  <div className="flex items-center gap-1 text-sm text-gray-600 mb-3">
-                    <User size={14} />
-                    <span>{project.client}</span>
+                    {/* Project Info with dark mode colors */}
+                    <h3 className="text-lg font-bold text-white mb-2 transition-colors group-hover:text-blue-300 leading-6 drop-shadow-sm">
+                      {project.title}
+                    </h3>
+
+                    <div className="flex items-center gap-4 text-sm text-gray-400 mb-2 group-hover:text-gray-300 transition-colors">
+                      <div className="flex items-center gap-1">
+                        <MapPin size={14} className="text-blue-400" />
+                        <span>{project.location}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar size={14} className="text-green-400" />
+                        <span>{project.year}</span>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center gap-1 text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                      <User size={14} className="text-purple-400" />
+                      <span>{project.client}</span>
+                    </div>
+
+                    {/* Category badge */}
+                    <div className="mt-3">
+                      <span className="inline-block px-3 py-1 text-xs font-medium bg-gray-700 text-gray-200 rounded-full border border-gray-600 group-hover:bg-blue-600/20 group-hover:border-blue-500/50 group-hover:text-blue-300 transition-all duration-300">
+                        {project.category}
+                      </span>
+                    </div>
+                  </CardContent>
+
+                  {/* Hover glow effect */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-purple-500/5 rounded-lg"></div>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                </Card>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

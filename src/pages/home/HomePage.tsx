@@ -13,7 +13,9 @@ import RequestDiscount from "@/components/RequestDiscount";
 const HomePage = () => {
   return (
     <div>
-      <main>
+      <div className="absolute inset-0 bg-black/60"></div>
+      <main className="gradient">
+        <Header></Header>
         <Hero />
         <About />
         <Services />
@@ -21,7 +23,7 @@ const HomePage = () => {
         <Projects />
         <Testimonials />
 
-        <RequestDiscount />
+        {/* <RequestDiscount /> */}
       </main>
 
       <Footer />

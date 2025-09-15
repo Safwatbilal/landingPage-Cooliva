@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { Building, Sparkles, Users } from "lucide-react";
+import LightRays from "./bits/lights";
 
 const About = () => {
   const features = [
@@ -7,12 +9,13 @@ const About = () => {
       title: "الخدمات الرئيسية",
       description:
         "تصميم وتوريد وتركيب غرف التبريد والتجميد. عزل سيارات النقل المبرد وتجهيزها بأنظمة تبريد حديثة.",
-      image:
-        "https://images.unsplash.com/photo-1614358612763-6d65704fbf64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // غرفة تبريد
-      color: "red",
-      bgColor: "bg-red-500",
-      textColor: "text-red-500",
-      borderColor: "border-red-500",
+      image: "/about.jpg",
+      color: "purple",
+      bgColor: "bg-purple-600",
+      textColor: "text-purple-400",
+      borderColor: "border-purple-500",
+      overlayColor: "bg-purple-900/70",
+      gradientColor: "#9333ea",
       link: "#services",
     },
     {
@@ -21,11 +24,13 @@ const About = () => {
       description:
         "نفخر بتنفيذ مئات المشاريع الناجحة في مختلف القطاعات. مشاريع متنوعة تشمل المطاعم والفنادق والمستشفيات والمصانع.",
       image:
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // مشاريع ومباني
-      color: "teal",
-      bgColor: "bg-teal-600",
-      textColor: "text-teal-600",
-      borderColor: "border-teal-600",
+        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      color: "blue",
+      bgColor: "bg-cyan-600",
+      textColor: "text-cyan-400",
+      borderColor: "border-cyan-500",
+      overlayColor: "bg-cyan-900/70",
+      gradientColor: "#0891b2",
       link: "#projects",
     },
     {
@@ -34,35 +39,55 @@ const About = () => {
       description:
         "منهجية عمل احترافية تبدأ بالدراسة والتخطيط، ثم التنفيذ بأعلى المعايير، وتنتهي بالمتابعة والصيانة الدورية.",
       image:
-        "https://images.unsplash.com/photo-1581092795360-fd1ca04f9b28?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80", // فريق عمل
-      color: "blue",
-      bgColor: "bg-blue-500",
-      textColor: "text-blue-500",
-      borderColor: "border-blue-500",
+        "https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      color: "teal",
+      bgColor: "bg-emerald-600",
+      textColor: "text-emerald-400",
+      borderColor: "border-emerald-500",
+      overlayColor: "bg-emerald-900/70",
+      gradientColor: "#059669",
       link: "#work",
     },
   ];
 
   return (
-    <section id="about" className="py-20 bg-white" dir="rtl">
-      <h2 className="main-title">من نحن</h2>
-
-      <div className="container mx-auto px-4 mb-16">
-        <motion.div
-          initial={{ y: 30, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto mb-12"
-        >
-          <p className="text-xl text-gray-700 leading-relaxed">
-            نحن شركة متخصصة في أنظمة التبريد والتجميد مع خبرة واسعة في تنفيذ
-            المشاريع وفق أعلى معايير الجودة.
-          </p>
-        </motion.div>
+    <section
+      id="about"
+      className="relative min-h-screen bg-gray-900 py-20"
+      dir="rtl"
+      style={{ fontFamily: "'Tajawal', 'Cairo', 'Amiri', sans-serif" }}
+    >
+      <div className="absolute inset-0 z-0">
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#20bdff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-6">
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-3 gradient text-white font-bold text-2xl px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-500 hover:rotate-1">
+            <Sparkles className="w-6 h-6 animate-spin t" />
+            <span>من نحن</span>
+            <Sparkles
+              className="w-6 h-6 animate-spin  "
+              style={{ animationDelay: "0.5s" }}
+            />
+          </div>
+          <p className="mt-6 text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            نحن فريق متخصص في تصميم وتنفيذ حلول التبريد الحديثة، نركز على الجودة
+            والابتكار لتقديم أفضل الخدمات لعملائنا.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {features.map((feature, index) => (
             <motion.div
@@ -71,24 +96,15 @@ const About = () => {
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="group border border-gray-300 text-center overflow-hidden hover:shadow-2xl transition-all duration-500"
+              className="group bg-slate-800 border border-slate-700 rounded-lg text-center overflow-hidden hover:shadow-2xl hover:shadow-slate-900/50 transition-all duration-500 hover:border-slate-600"
             >
-              {/* Image Container */}
               <div className="relative overflow-hidden">
-                {/* Overlay */}
                 <div
-                  className={`absolute inset-0 ${
-                    feature.color === "red"
-                      ? "bg-red-500/60"
-                      : feature.color === "teal"
-                      ? "bg-teal-600/60"
-                      : "bg-blue-500/60"
-                  } z-10`}
+                  className={`absolute inset-0 ${feature.overlayColor} z-10`}
                 ></div>
 
-                {/* Triangle Effect */}
                 <div
-                  className="absolute bottom-0 right-0 w-0 h-0 border-solid border-transparent border-b-white transition-all duration-500 group-hover:border-r-0 group-hover:border-l-[500px] group-hover:border-b-[170px] z-20"
+                  className="absolute bottom-0 right-0 w-0 h-0 border-solid border-transparent border-b-slate-800 transition-all duration-700 ease-[cubic-bezier(0.68,-0.55,0.27,1.55)] group-hover:border-l-[500px] group-hover:border-b-[170px] z-20"
                   style={{
                     borderBottomWidth: "170px",
                     borderLeftWidth: "500px",
@@ -103,36 +119,25 @@ const About = () => {
                 />
               </div>
 
-              {/* Content */}
               <div className="p-6">
-                <h3 className={`relative text-3xl font-bold mb-8 inline-block`}>
+                <h3
+                  className={`relative text-3xl font-bold mb-8 inline-block text-slate-200`}
+                >
                   {feature.title}
                   <span
-                    className={`absolute bottom-0 left-4 right-4 h-1 ${
-                      feature.color === "red"
-                        ? "bg-red-500"
-                        : feature.color === "teal"
-                        ? "bg-teal-600"
-                        : "bg-blue-500"
-                    } -mb-5`}
+                    className={`absolute bottom-0 left-4 right-4 h-1 ${feature.bgColor} -mb-5`}
                   ></span>
                 </h3>
 
-                <p className="text-gray-600 text-lg leading-8 mb-8 px-2">
+                <p className="text-slate-400 text-lg leading-8 mb-8 px-2">
                   {feature.description}
                 </p>
 
                 <a
                   href={feature.link}
-                  className={`inline-block border-3 ${feature.borderColor} ${feature.textColor} font-bold text-xl px-8 py-3 rounded-md transition-all duration-500 relative overflow-hidden group/link`}
+                  className={`inline-block border-2 ${feature.borderColor} ${feature.textColor} font-bold text-xl px-8 py-3 rounded-md transition-all duration-500 relative overflow-hidden group/link hover:text-white`}
                   style={{
-                    background: `linear-gradient(to right, ${
-                      feature.color === "red"
-                        ? "#f44036"
-                        : feature.color === "teal"
-                        ? "#009688"
-                        : "#03a9f4"
-                    } 50%, white 50%)`,
+                    background: `linear-gradient(to right, ${feature.gradientColor} 50%, transparent 50%)`,
                     backgroundSize: "200% 100%",
                     backgroundPosition: "right bottom",
                   }}
